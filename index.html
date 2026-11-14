@@ -13,6 +13,10 @@
   </header>
 
   <main>
+    <div class="aviso" role="note">
+      <strong>Aviso:</strong> Los precios de referencia son ficticios y sirven solo para demostración. Esta herramienta hace una revisión preliminar: un precio dentro del rango no significa que la cotización sea razonable. Deben verificarse alcance, cantidades y condiciones del trabajo.
+    </div>
+
     <section class="card">
       <h2>Nueva partida</h2>
       <form id="item-form" novalidate>
@@ -62,28 +66,32 @@
     </section>
 
     <section class="card">
-      <h2>Partidas ingresadas</h2>
-      <p class="nota">Los cálculos son <strong>provisionales</strong>: todavía no se evalúa la comparabilidad ni se clasifica el precio (Etapa 2).</p>
-      <div class="tabla-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Descripción</th>
-              <th>Cant.</th>
-              <th>Unidad</th>
-              <th>Precio cotizado</th>
-              <th>Referencia</th>
-              <th>Confirmación</th>
-              <th>Total cotizado</th>
-              <th>Total referencia</th>
-              <th>Dif. unitaria</th>
-              <th>Desviación %</th>
-            </tr>
-          </thead>
-          <tbody id="tabla-body">
-            <tr class="vacia"><td colspan="10">Aún no hay partidas.</td></tr>
-          </tbody>
-        </table>
+      <h2>Resumen de partidas</h2>
+      <table class="tabla-partidas">
+        <thead>
+          <tr>
+            <th class="col-desc">Descripción</th>
+            <th>Cantidad</th>
+            <th>Precio cotizado</th>
+            <th>Totales</th>
+            <th>Desviación</th>
+            <th>Resultado</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-body"></tbody>
+      </table>
+
+      <div class="totales">
+        <h3>Totales (solo partidas comparables)</h3>
+        <dl>
+          <div><dt>Total cotizado</dt><dd id="tot-cotizado">$0.00</dd></div>
+          <div><dt>Total de referencia</dt><dd id="tot-referencia">$0.00</dd></div>
+          <div><dt>Diferencia total</dt><dd id="tot-diferencia">+$0.00</dd></div>
+          <div><dt>Partidas comparables</dt><dd id="tot-comparables">0</dd></div>
+          <div><dt>No comparables</dt><dd id="tot-no-comparables">0</dd></div>
+        </dl>
+        <p class="nota">Las partidas no comparables se muestran en la tabla, pero no entran en los totales.</p>
       </div>
     </section>
   </main>

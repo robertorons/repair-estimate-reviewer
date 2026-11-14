@@ -17,6 +17,16 @@ header p { margin: 0; font-size: .95rem; opacity: .9; }
 
 main { max-width: 1100px; margin: 1rem auto; padding: 0 1rem; }
 
+.aviso {
+  background: #fff4d6;
+  border: 1px solid #e0b43c;
+  border-left: 6px solid #e0b43c;
+  border-radius: 6px;
+  padding: .8rem 1rem;
+  margin-bottom: 1rem;
+  font-size: .95rem;
+}
+
 .card {
   background: #fff;
   border-radius: 8px;
@@ -49,7 +59,7 @@ input, select {
 .detalle p { margin: .2rem 0; }
 
 .error { color: #b00020; font-weight: bold; }
-.nota { font-size: .9rem; color: #52606d; }
+.nota { font-size: .85rem; color: #52606d; }
 
 button {
   background: #1f3a5f;
@@ -62,9 +72,63 @@ button {
 }
 button:hover { background: #2c507f; }
 
-.tabla-wrap { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
-th, td { border-bottom: 1px solid #dde3ea; padding: .45rem .5rem; text-align: left; white-space: nowrap; }
-th { background: #eef3fa; }
-td.num { text-align: right; }
-tr.vacia td { text-align: center; color: #7b8794; }
+/* ---------- Tabla de partidas ---------- */
+.tabla-partidas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  table-layout: auto;
+}
+.tabla-partidas th,
+.tabla-partidas td {
+  padding: .5rem .5rem;
+  text-align: left;
+  vertical-align: top;
+}
+.tabla-partidas th { background: #eef3fa; border-bottom: 2px solid #c9d3df; }
+.tabla-partidas .col-desc { width: 34%; overflow-wrap: anywhere; }
+.tabla-partidas .fila-principal td { border-top: 1px solid #dde3ea; }
+.tabla-partidas .fila-comentario td {
+  background: #f8f9fb;
+  font-size: .85rem;
+  color: #3e4c59;
+  padding-top: .3rem;
+  padding-bottom: .6rem;
+}
+.tabla-partidas tr.vacia td { text-align: center; color: #7b8794; }
+.sub { font-size: .8rem; color: #52606d; margin-top: .2rem; }
+.guion { color: #7b8794; }
+
+.etiqueta {
+  display: inline-block;
+  padding: .2rem .5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: .8rem;
+}
+.res-azul  { background: #dbe8f7; color: #1f3a5f; border: 1px solid #9db8d8; }
+.res-ambar { background: #ffe9b3; color: #5c4200; border: 1px solid #e0b43c; }
+.res-rojo  { background: #fbdcdc; color: #7a1f1f; border: 1px solid #e0a1a1; }
+.res-gris  { background: #e4e7eb; color: #3e4c59; border: 1px solid #b8c2cc; }
+
+button.eliminar {
+  background: #fff;
+  color: #b00020;
+  border: 1px solid #b00020;
+  padding: .3rem .6rem;
+  font-size: .8rem;
+}
+button.eliminar:hover { background: #fdecee; }
+
+/* ---------- Totales ---------- */
+.totales { margin-top: 1rem; border-top: 2px solid #c9d3df; padding-top: .5rem; }
+.totales h3 { font-size: 1rem; margin: .3rem 0 .6rem; }
+.totales dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: .6rem;
+  margin: 0;
+}
+.totales dl div { background: #eef3fa; border-radius: 6px; padding: .5rem .7rem; }
+.totales dt { font-size: .8rem; color: #52606d; }
+.totales dd { margin: .2rem 0 0; font-size: 1.15rem; font-weight: bold; }
