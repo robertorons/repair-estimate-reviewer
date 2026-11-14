@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair Estimate Reviewer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Repair Estimate Reviewer</h1>
+    <p>Comparación preliminar de precios unitarios contra un catálogo de referencia.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Nueva partida</h2>
+      <form id="item-form" novalidate>
+        <label>Descripción del trabajo
+          <input type="text" id="descripcion" placeholder="Ej.: Pintura de sala y pasillo">
+        </label>
+
+        <div class="row">
+          <label>Cantidad
+            <input type="number" id="cantidad" step="any" min="0" placeholder="2000">
+          </label>
+          <label>Unidad
+            <select id="unidad">
+              <option value="SF">SF</option>
+              <option value="SY">SY</option>
+              <option value="LF">LF</option>
+              <option value="EA">EA</option>
+              <option value="LS">LS</option>
+              <option value="Otra">Otra</option>
+            </select>
+          </label>
+          <label>Precio unitario cotizado (US$)
+            <input type="number" id="precio" step="any" min="0" placeholder="4.50">
+          </label>
+        </div>
+
+        <label>Partida de referencia del catálogo
+          <select id="referencia">
+            <option value="">— Elegir —</option>
+          </select>
+        </label>
+
+        <div id="detalle-referencia" class="detalle" hidden></div>
+
+        <label>¿Coinciden el alcance y la base de precio?
+          <select id="confirmacion">
+            <option value="">— Elegir —</option>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+            <option value="No sé">No sé</option>
+          </select>
+        </label>
+
+        <p id="error" class="error" role="alert" hidden></p>
+        <button type="submit">Agregar partida</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Partidas ingresadas</h2>
+      <p class="nota">Los cálculos son <strong>provisionales</strong>: todavía no se evalúa la comparabilidad ni se clasifica el precio (Etapa 2).</p>
+      <div class="tabla-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Cant.</th>
+              <th>Unidad</th>
+              <th>Precio cotizado</th>
+              <th>Referencia</th>
+              <th>Confirmación</th>
+              <th>Total cotizado</th>
+              <th>Total referencia</th>
+              <th>Dif. unitaria</th>
+              <th>Desviación %</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-body">
+            <tr class="vacia"><td colspan="10">Aún no hay partidas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
