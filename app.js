@@ -239,5 +239,54 @@ tablaBody.addEventListener("click", function (e) {
 
 selReferencia.addEventListener("change", mostrarDetalle);
 
+// ---------- Visor de PDF (Etapa 3) ----------
+// El archivo nunca sale del navegador: se muestra con una dirección temporal local.
+const inputPdf = document.getElementById("archivo-pdf");
+const botonQuitarPdf = document.getElementById("quitar-pdf");
+const errorPdf = document.getElementById("error-pdf");
+const panelPdf = document.getElementById("panel-pdf");
+const visorPdf = document.getElementById("visor-pdf");
+const zonaIngreso = document.getElementById("zona-ingreso");
+let urlPdf = null;
+
+function liberarPdf() {
+  if (urlPdf) {
+    URL.revokeObjectURL(urlPdf);
+    urlPdf = null;
+  }
+}
+
+inputPdf.addEventListener("change", function () {
+  errorPdf.hidden = true;
+  const archivo = inputPdf.files[0];
+  if (!archivo) return;
+
+  const esPdf = archivo.type === "application/pdf" || /\.pdf$/i.test(archivo.name);
+  if (!esPdf) {
+    errorPdf.textContent = "El archivo elegido no es un PDF. Elige un archivo con extensión .pdf.";
+    errorPdf.hidden = false;
+    inputPdf.value = "";
+    return; // el visor actual (si lo hay) no cambia
+  }
+
+  liberarPdf();
+  urlPdf = URL.createObjectURL(archivo);
+  visorPdf.src = urlPdf;
+  panelPdf.hidden = false;
+  zonaIngreso.classList.add("con-pdf");
+  botonQuitarPdf.hidden = false;
+});
+
+botonQuitarPdf.addEventListener("click", function () {
+  visorPdf.removeAttribute("src");
+  liberarPdf();
+  panelPdf.hidden = true;
+  zonaIngreso.classList.remove("con-pdf");
+  botonQuitarPdf.hidden = true;
+  errorPdf.hidden = true;
+  inputPdf.value = "";
+  // Las partidas ingresadas no se tocan.
+});
+
 cargarCatalogo();
 dibujar();

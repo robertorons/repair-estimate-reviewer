@@ -18,6 +18,22 @@
     </div>
 
     <section class="card">
+      <h2>Cotización en PDF (opcional)</h2>
+      <p class="nota">El PDF se muestra solo en tu navegador: no se envía a ningún servidor y se pierde al recargar la página. La aplicación funciona igual sin PDF.</p>
+      <div class="barra-pdf">
+        <input type="file" id="archivo-pdf" accept="application/pdf,.pdf" aria-label="Elegir archivo PDF">
+        <button type="button" id="quitar-pdf" hidden>Quitar PDF</button>
+      </div>
+      <p id="error-pdf" class="error" role="alert" hidden></p>
+    </section>
+
+    <div id="zona-ingreso" class="zona-ingreso">
+    <section id="panel-pdf" class="card panel-pdf" hidden>
+      <h2>Visor de PDF</h2>
+      <iframe id="visor-pdf" title="Cotización en PDF"></iframe>
+    </section>
+
+    <section class="card">
       <h2>Nueva partida</h2>
       <form id="item-form" novalidate>
         <label>Descripción del trabajo
@@ -64,6 +80,7 @@
         <button type="submit">Agregar partida</button>
       </form>
     </section>
+    </div>
 
     <section class="card">
       <h2>Resumen de partidas</h2>
